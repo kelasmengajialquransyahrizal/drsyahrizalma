@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Syahrizal, MA - Personal Branding",
+  "description": "Pusat identitas digital, media dakwah, publikasi ilmiah, dan pelatihan AI oleh Dr. Syahrizal, MA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

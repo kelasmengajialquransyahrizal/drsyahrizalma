@@ -1,0 +1,94 @@
+export const siteConfig = {
+  name: "Dr. Syahrizal, MA",
+  title: "Akademisi, Konsultan Pendidikan & Trainer AI",
+  description: "Pusat identitas digital, media dakwah, publikasi ilmiah, layanan konsultasi, dan pelatihan AI.",
+  contact: {
+    email: "kontak@syahrizal.com",
+    phone: "+62 812-3456-7890",
+    address: "Jl. Pendidikan No. 1, Jakarta",
+    socials: {
+      linkedin: "https://linkedin.com",
+      instagram: "https://instagram.com",
+      youtube: "https://youtube.com"
+    }
+  }
+};
+
+export const statsData = [
+  { label: "Pelatihan Selesai", value: "150+" },
+  { label: "Peserta Edukasi", value: "5,000+" },
+  { label: "Publikasi Ilmiah", value: "45+" },
+  { label: "Mitra Institusi", value: "30+" },
+];
+
+export const servicesData = [
+  {
+    id: "konsultasi-pendidikan",
+    title: "Konsultasi Pendidikan",
+    description: "Pendampingan strategis untuk peningkatan mutu lembaga pendidikan Islam dan umum.",
+    icon: "GraduationCap"
+  },
+  {
+    id: "pelatihan-ai",
+    title: "Pelatihan Artificial Intelligence",
+    description: "Workshop integrasi AI untuk optimalisasi riset, administrasi, dan pengajaran.",
+    icon: "Cpu"
+  },
+  {
+    id: "dakwah-digital",
+    title: "Pelatihan Dakwah Digital",
+    description: "Strategi konten dan pemanfaatan platform digital untuk syiar Islam yang modern.",
+    icon: "Megaphone"
+  },
+  {
+    id: "pendampingan-riset",
+    title: "Pendampingan Penelitian",
+    description: "Bimbingan penyusunan jurnal, tesis, dan artikel ilmiah bereputasi.",
+    icon: "BookOpen"
+  }
+];
+
+export const articlesData = [
+  {
+    id: "ai-dalam-pesantren",
+    title: "Transformasi Digital di Pesantren: Memanfaatkan AI untuk Pembelajaran",
+    excerpt: "Bagaimana institusi pesantren dapat beradaptasi dengan era Society 5.0 tanpa kehilangan nilai tradisinya.",
+    category: "Teknologi Pendidikan",
+    date: "12 Mei 2026",
+    author: "Dr. Syahrizal, MA",
+    readTime: "5 Menit"
+  },
+  {
+    id: "dakwah-era-digital",
+    title: "Strategi Dakwah Efektif di Platform Media Sosial",
+    excerpt: "Pendekatan kultural dan teknikal dalam menyebarkan nilai-nilai rahmatan lil 'alamin kepada Gen Z.",
+    category: "Dakwah Digital",
+    date: "05 April 2026",
+    author: "Dr. Syahrizal, MA",
+    readTime: "4 Menit"
+  },
+  {
+    id: "produktivitas-akademik",
+    title: "Meningkatkan Produktivitas Menulis Artikel Ilmiah dengan Tools AI",
+    excerpt: "Panduan etis dan taktis menggunakan ChatGPT dan Mendeley untuk riset akademik.",
+    category: "Akademik",
+    date: "20 Maret 2026",
+    author: "Dr. Syahrizal, MA",
+    readTime: "6 Menit"
+  }
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    name: "Prof. Dr. Ahmad",
+    role: "Rektor Universitas",
+    text: "Pelatihan AI yang diberikan sangat membuka wawasan dosen kami dalam memanfaatkan teknologi secara etis untuk pendidikan."
+  },
+  {
+    id: 2,
+    name: "Ust. Hasanuddin",
+    role: "Pimpinan Pesantren",
+    text: "Materi dakwah digitalnya praktis dan mudah dipahami, langsung dapat diaplikasikan oleh para santri dan asatidz."
+  }
+];
