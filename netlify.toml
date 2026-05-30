@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  
+  # Netlify's Next.js Runtime will automatically detect the framework
+  # and configure the publish directory and serverless functions correctly.
+
+[build.environment]
+  # Ensure Netlify uses Node.js v20 (or higher) compatible with Next.js 15+
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Automatically install Netlify's Next.js plugin for optimal compatibility
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
