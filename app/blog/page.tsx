@@ -1,4 +1,4 @@
-import { articlesData } from "@/lib/data";
+import { articlesData, imagesConfig } from "@/lib/data";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,7 +28,7 @@ export default function BlogPage() {
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-lg">
                   <Image 
-                    src="https://picsum.photos/seed/ai-pesantren/800/600" 
+                    src={imagesConfig.blogFeatured} 
                     alt={articlesData[0].title}
                     fill
                     className="object-cover"
@@ -73,7 +73,7 @@ export default function BlogPage() {
               <article key={article.id} className="group">
                 <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-gray-100">
                   <Image 
-                    src={`https://picsum.photos/seed/${article.id}/600/400`}
+                    src={article.image || `https://picsum.photos/seed/${article.id}/600/400`}
                     alt={article.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

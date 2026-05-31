@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { statsData, servicesData, testimonialsData } from "@/lib/data";
+import { statsData, servicesData, testimonialsData, imagesConfig } from "@/lib/data";
 import { ArrowRight, BookOpen, Cpu, GraduationCap, Megaphone, CheckCircle2 } from "lucide-react";
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white bg-white relative">
                 {/* Fallback image */}
                 <Image 
-                  src="https://picsum.photos/seed/akademisi/600/600" 
+                  src={imagesConfig.hero} 
                   alt="Dr. Syahrizal, MA"
                   fill
                   className="object-cover"
@@ -67,7 +67,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 relative h-96 rounded-2xl overflow-hidden shadow-lg order-2 md:order-1 mt-8 md:mt-0">
              <Image 
-                src="https://picsum.photos/seed/seminar/800/1000" 
+                src={imagesConfig.aboutHero} 
                 alt="Seminar Dr. Syahrizal"
                 fill
                 className="object-cover"

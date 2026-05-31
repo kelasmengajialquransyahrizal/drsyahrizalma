@@ -1,3 +1,10 @@
+export const imagesConfig = {
+  hero: "https://picsum.photos/seed/akademisi/600/600",
+  aboutHero: "https://picsum.photos/seed/seminar/800/1000",
+  profile: "https://picsum.photos/seed/profil/800/1000",
+  blogFeatured: "https://picsum.photos/seed/ai-pesantren/800/600",
+};
+
 export const siteConfig = {
   name: "Dr. Syahrizal, MA",
   title: "Akademisi, Konsultan Pendidikan & Trainer AI",
@@ -56,7 +63,8 @@ export const articlesData = [
     category: "Teknologi Pendidikan",
     date: "12 Mei 2026",
     author: "Dr. Syahrizal, MA",
-    readTime: "5 Menit"
+    readTime: "5 Menit",
+    image: "https://picsum.photos/seed/ai-pesantren-1/600/400"
   },
   {
     id: "dakwah-era-digital",
@@ -65,7 +73,8 @@ export const articlesData = [
     category: "Dakwah Digital",
     date: "05 April 2026",
     author: "Dr. Syahrizal, MA",
-    readTime: "4 Menit"
+    readTime: "4 Menit",
+    image: "https://picsum.photos/seed/dakwah-era-digital-1/600/400"
   },
   {
     id: "produktivitas-akademik",
@@ -74,7 +83,8 @@ export const articlesData = [
     category: "Akademik",
     date: "20 Maret 2026",
     author: "Dr. Syahrizal, MA",
-    readTime: "6 Menit"
+    readTime: "6 Menit",
+    image: "https://picsum.photos/seed/produktivitas-akademik-1/600/400"
   }
 ];
 

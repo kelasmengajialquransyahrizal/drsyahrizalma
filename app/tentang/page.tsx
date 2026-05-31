@@ -2,6 +2,8 @@ import Image from "next/image";
 import { CheckCircle2, Award, Briefcase, GraduationCap } from "lucide-react";
 import Link from "next/link";
 
+import { imagesConfig } from "@/lib/data";
+
 export const metadata = {
   title: 'Tentang - Dr. Syahrizal, MA',
   description: 'Profil, riwayat pendidikan, dan pengalaman profesional Dr. Syahrizal, MA.',
@@ -26,7 +28,7 @@ export default function TentangPage() {
           <div className="lg:col-span-5 sticky top-28">
             <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border-8 border-gray-50">
               <Image 
-                src="https://picsum.photos/seed/profil/800/1000" 
+                src={imagesConfig.profile} 
                 alt="Dr. Syahrizal"
                 fill
                 className="object-cover"
