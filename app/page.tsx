@@ -137,7 +137,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonialsData.map((t) => (
             <div key={t.id} className="bg-white border border-gray-100 p-8 rounded-2xl shadow-sm italic relative">
-              <span className="text-6xl text-gray-200 font-serif absolute top-4 left-4 leading-none select-none">"</span>
+              <span className="text-6xl text-gray-200 font-serif absolute top-4 left-4 leading-none select-none">&quot;</span>
               <p className="text-gray-700 relative z-10 mb-6 leading-relaxed pt-4">{t.text}</p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4 relative">

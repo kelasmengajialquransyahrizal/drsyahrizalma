@@ -28,9 +28,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setIsOpen(false);
-  }, [pathname]);
+  }
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${hasScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-white py-5"}`}>

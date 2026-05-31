@@ -51,7 +51,7 @@ export default function TentangPage() {
                 Dengan latar belakang pendidikan yang mapan di bidang kajian Islam dan pengalaman praktis dalam manajemen pendidikan, saya mendedikasikan diri untuk menjembatani kesenjangan digital di lembaga-lembaga pendidikan tradisional (pesantren) maupun modern.
               </p>
               <p>
-                Visi saya adalah mewujudkan ekosistem pendidikan Islam yang inklusif, adaptif terhadap perubahan Society 5.0, namun tetap kokoh berpijak pada prinsip-prinsip rahmatan lil 'alamin.
+                Visi saya adalah mewujudkan ekosistem pendidikan Islam yang inklusif, adaptif terhadap perubahan Society 5.0, namun tetap kokoh berpijak pada prinsip-prinsip rahmatan lil &apos;alamin.
               </p>
             </div>
 
