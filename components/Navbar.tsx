@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${hasScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-white py-5"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <Link href="/" className="font-display font-bold text-xl md:text-2xl text-emerald-dark tracking-tight">
+        <Link href="/" className="font-display font-bold text-xl md:text-2xl text-blue-dark tracking-tight">
           Dr. Syahrizal<span className="text-gold">.</span>
         </Link>
 
@@ -47,14 +47,14 @@ export default function Navbar() {
             <Link 
               key={link.name} 
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-emerald ${pathname === link.href ? "text-emerald font-semibold" : "text-gray-600"}`}
+              className={`text-sm font-medium transition-colors hover:text-blue ${pathname === link.href ? "text-blue font-semibold" : "text-gray-600"}`}
             >
               {link.name}
             </Link>
           ))}
           <Link 
             href="/kontak" 
-            className="px-5 py-2.5 bg-emerald text-white text-sm font-semibold rounded-full hover:bg-emerald-dark transition-all duration-300 shadow-sm hover:shadow-md"
+            className="px-5 py-2.5 bg-blue text-white text-sm font-semibold rounded-full hover:bg-blue-dark transition-all duration-300 shadow-sm hover:shadow-md"
           >
             Konsultasi
           </Link>
@@ -84,7 +84,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`block px-3 py-3 rounded-md text-base font-medium ${pathname === link.href ? "text-emerald bg-emerald/5" : "text-gray-700 hover:text-emerald hover:bg-gray-50"}`}
+                  className={`block px-3 py-3 rounded-md text-base font-medium ${pathname === link.href ? "text-blue bg-blue/5" : "text-gray-700 hover:text-blue hover:bg-gray-50"}`}
                 >
                   {link.name}
                 </Link>
@@ -92,7 +92,7 @@ export default function Navbar() {
               <div className="pt-4 px-3">
                 <Link
                   href="/kontak"
-                  className="block w-full text-center px-5 py-3 bg-emerald text-white font-medium rounded-md hover:bg-emerald-dark transition-colors"
+                  className="block w-full text-center px-5 py-3 bg-blue text-white font-medium rounded-md hover:bg-blue-dark transition-colors"
                 >
                   Jadwalkan Konsultasi
                 </Link>

@@ -118,14 +118,14 @@ export default function BlogAdminPage() {
         </div>
         <button 
           onClick={isFormOpen ? () => setIsFormOpen(false) : openAddForm}
-          className="mt-4 md:mt-0 flex items-center px-4 py-2 bg-emerald text-white rounded-lg hover:bg-emerald-dark transition-colors"
+          className="mt-4 md:mt-0 flex items-center px-4 py-2 bg-blue text-white rounded-lg hover:bg-blue-dark transition-colors"
         >
           {isFormOpen ? "Batal" : <><Plus size={18} className="mr-2" /> Tambah Artikel Baru</>}
         </button>
       </div>
 
       {isFormOpen && (
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-emerald/30 mb-8">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-blue/30 mb-8">
           <h3 className="text-lg font-bold mb-4">{editingId ? "Edit Artikel" : "Tulis Artikel Baru"}</h3>
           <form onSubmit={handleSave} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -174,12 +174,12 @@ export default function BlogAdminPage() {
                   value={currentDraft.content || ""}
                   onChange={e => setCurrentDraft({...currentDraft, content: e.target.value})}
                   rows={8} 
-                  className="w-full px-3 py-3 border border-gray-300 rounded-b-md focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 shadow-inner" 
+                  className="w-full px-3 py-3 border border-gray-300 rounded-b-md focus:outline-none focus:border-blue/50 focus:ring-1 focus:ring-blue/50 shadow-inner" 
                   placeholder="Tulis konten artikel di sini..."
                ></textarea>
             </div>
             <div className="flex justify-end">
-              <button type="submit" className="px-6 py-2 bg-emerald text-white rounded-md font-medium hover:bg-emerald-dark transition-colors">
+              <button type="submit" className="px-6 py-2 bg-blue text-white rounded-md font-medium hover:bg-blue-dark transition-colors">
                 {editingId ? "Simpan Perubahan" : "Simpan & Publikasikan"}
               </button>
             </div>
@@ -212,12 +212,12 @@ export default function BlogAdminPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 hidden md:table-cell">
-                  <span className="bg-emerald/10 text-emerald-dark px-2 py-1 rounded text-xs font-medium">{article.category}</span>
+                  <span className="bg-blue/10 text-blue-dark px-2 py-1 rounded text-xs font-medium">{article.category}</span>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-500 hidden lg:table-cell">{article.date}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center space-x-3">
-                    <button onClick={() => openEditForm(article)} className="text-gray-400 hover:text-emerald transition-colors" title="Edit">
+                    <button onClick={() => openEditForm(article)} className="text-gray-400 hover:text-blue transition-colors" title="Edit">
                       <Edit size={18} />
                     </button>
                     <button onClick={() => handleDelete(article.id)} className="text-gray-400 hover:text-red-500 transition-colors" title="Hapus">

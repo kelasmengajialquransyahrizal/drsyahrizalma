@@ -19,10 +19,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Tautan Cepat</h3>
             <ul className="space-y-3">
-              <li><Link href="/tentang" className="text-sm hover:text-emerald transition-colors">Tentang Saya</Link></li>
-              <li><Link href="/layanan" className="text-sm hover:text-emerald transition-colors">Layanan Konsultasi</Link></li>
-              <li><Link href="/program" className="text-sm hover:text-emerald transition-colors">Program Pelatihan</Link></li>
-              <li><Link href="/blog" className="text-sm hover:text-emerald transition-colors">Blog & Artikel</Link></li>
+              <li><Link href="/tentang" className="text-sm hover:text-blue transition-colors">Tentang Saya</Link></li>
+              <li><Link href="/layanan" className="text-sm hover:text-blue transition-colors">Layanan Konsultasi</Link></li>
+              <li><Link href="/program" className="text-sm hover:text-blue transition-colors">Program Pelatihan</Link></li>
+              <li><Link href="/blog" className="text-sm hover:text-blue transition-colors">Blog & Artikel</Link></li>
             </ul>
           </div>
           
@@ -40,15 +40,15 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Kontak</h3>
             <ul className="space-y-3">
               <li className="flex items-start text-sm text-gray-400">
-                <MapPin size={18} className="mr-2 text-emerald shrink-0 mt-0.5" />
+                <MapPin size={18} className="mr-2 text-blue shrink-0 mt-0.5" />
                 <span>{siteConfig.contact.address}</span>
               </li>
               <li className="flex items-center text-sm text-gray-400">
-                <Phone size={18} className="mr-2 text-emerald shrink-0" />
+                <Phone size={18} className="mr-2 text-blue shrink-0" />
                 <span>{siteConfig.contact.phone}</span>
               </li>
               <li className="flex items-center text-sm text-gray-400">
-                <Mail size={18} className="mr-2 text-emerald shrink-0" />
+                <Mail size={18} className="mr-2 text-blue shrink-0" />
                 <span>{siteConfig.contact.email}</span>
               </li>
             </ul>

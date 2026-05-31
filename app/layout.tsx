@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="id" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}>
-      <body className="font-sans antialiased flex flex-col min-h-screen bg-white text-darker selection:bg-emerald/20 selection:text-emerald-dark">
+      <body className="font-sans antialiased flex flex-col min-h-screen bg-white text-darker selection:bg-blue/20 selection:text-blue-dark">
         <Navbar />
         <main className="flex-grow pt-20">
           {children}

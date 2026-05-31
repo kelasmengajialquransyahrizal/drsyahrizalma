@@ -1,4 +1,4 @@
-import { servicesData } from "@/lib/data";
+import { servicesData, pageContentConfig } from "@/lib/data";
 import { ArrowRight, BookOpen, Cpu, GraduationCap, Megaphone, Check } from "lucide-react";
 import Link from "next/link";
 
@@ -8,14 +8,16 @@ export const metadata = {
 };
 
 export default function LayananPage() {
+  const content = pageContentConfig.layanan;
+
   return (
     <div className="flex flex-col w-full">
       {/* HEADER PAGE */}
-      <section className="bg-emerald-dark py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-blue-dark py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Layanan & Konsultasi</h1>
-          <p className="text-emerald-light text-lg max-w-2xl mx-auto">
-            Solusi komprehensif untuk peningkatan mutu pendidikan, adaptasi teknologi, dan publikasi ilmiah.
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">{content.title}</h1>
+          <p className="text-blue-light text-lg max-w-2xl mx-auto">
+            {content.content}
           </p>
         </div>
       </section>
@@ -36,7 +38,7 @@ export default function LayananPage() {
             return (
               <div key={service.id} id={service.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isEven ? 'lg:flex-row-reverse' : ''} scroll-mt-24`}>
                 <div className={`${isEven ? 'lg:order-2' : ''}`}>
-                  <div className="w-16 h-16 bg-emerald/10 text-emerald rounded-2xl flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-blue/10 text-blue rounded-2xl flex items-center justify-center mb-6">
                     <Icon size={32} />
                   </div>
                   <h2 className="text-3xl font-display font-bold text-darker mb-4">{service.title}</h2>
@@ -46,13 +48,13 @@ export default function LayananPage() {
                   <ul className="space-y-3 mb-8">
                     {[1, 2, 3].map((_, i) => (
                       <li key={i} className="flex items-start text-gray-700">
-                        <Check size={20} className="text-emerald shrink-0 mr-3 mt-0.5" />
+                        <Check size={20} className="text-blue shrink-0 mr-3 mt-0.5" />
                         <span>Analisis kebutuhan mendalam dan strategis.</span>
                       </li>
                     ))}
                   </ul>
 
-                  <Link href="/kontak" className="inline-flex items-center px-6 py-3 bg-white border border-gray-300 text-darker font-semibold rounded-full hover:border-emerald hover:text-emerald transition-all">
+                  <Link href="/kontak" className="inline-flex items-center px-6 py-3 bg-white border border-gray-300 text-darker font-semibold rounded-full hover:border-blue hover:text-blue transition-all">
                     Konsultasikan Kebutuhan Anda <ArrowRight size={18} className="ml-2" />
                   </Link>
                 </div>
@@ -70,11 +72,11 @@ export default function LayananPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-emerald-dark to-emerald py-20 px-4 sm:px-6 lg:px-8 text-center text-white">
+      <section className="bg-gradient-to-r from-blue-dark to-blue py-20 px-4 sm:px-6 lg:px-8 text-center text-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-display font-bold mb-6">Mulai Transformasi Institusi Anda</h2>
-          <p className="text-emerald-light mb-8 text-lg">Jadwalkan sesi konsultasi awal gratis selama 30 menit untuk mendiskusikan tantangan yang Anda hadapi.</p>
-          <Link href="/kontak" className="inline-block px-8 py-4 bg-white text-emerald-dark font-bold rounded-full hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">
+          <p className="text-blue-light mb-8 text-lg">Jadwalkan sesi konsultasi awal gratis selama 30 menit untuk mendiskusikan tantangan yang Anda hadapi.</p>
+          <Link href="/kontak" className="inline-block px-8 py-4 bg-white text-blue-dark font-bold rounded-full hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">
             Booking Jadwal Sekarang
           </Link>
         </div>

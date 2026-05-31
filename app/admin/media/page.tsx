@@ -25,14 +25,14 @@ export default function MediaAdminPage() {
         </div>
         <button 
           onClick={handleSave}
-          className="flex items-center px-6 py-2.5 bg-emerald text-white font-medium rounded-lg hover:bg-emerald-dark transition-all"
+          className="flex items-center px-6 py-2.5 bg-blue text-white font-medium rounded-lg hover:bg-blue-dark transition-all"
         >
           <Save size={18} className="mr-2" /> Simpan Perubahan
         </button>
       </div>
 
       {saved && (
-        <div className="bg-emerald/10 border border-emerald/20 text-emerald-dark px-4 py-3 rounded-lg mb-6 flex items-center">
+        <div className="bg-blue/10 border border-blue/20 text-blue-dark px-4 py-3 rounded-lg mb-6 flex items-center">
           <CheckCircle2 size={18} className="mr-2" />
           Berhasil menyimpan konfigurasi gambar terbaru. (Simulasi)
         </div>

@@ -8,7 +8,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-64 bg-darker text-gray-300 flex-shrink-0 hidden md:flex flex-col">
         <div className="p-6 border-b border-gray-800">
           <h2 className="text-xl font-bold text-white font-display">CPanel Admin</h2>
-          <p className="text-xs text-emerald-light mt-1">Status: Lokal Mode</p>
+          <p className="text-xs text-blue-light mt-1">Status: Lokal Mode</p>
         </div>
         <nav className="flex-grow py-6 px-4 space-y-2">
           <Link href="/admin" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
@@ -20,9 +20,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/media" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
             <ImageIcon size={20} className="mr-3" /> Kelola Media
           </Link>
-          <div className="flex items-center px-4 py-3 text-gray-500 rounded-lg cursor-not-allowed">
-            <Settings size={20} className="mr-3" /> Konfigurasi
-          </div>
+          <Link href="/admin/halaman" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
+            <Settings size={20} className="mr-3" /> Kelola Teks Halaman
+          </Link>
         </nav>
         <div className="p-4 border-t border-gray-800">
           <Link href="/" className="flex items-center px-4 py-2 hover:bg-gray-800 text-sm hover:text-white rounded-lg transition-colors">

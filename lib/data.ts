@@ -1,3 +1,28 @@
+export const pageContentConfig = {
+  beranda: {
+    heroTitle: "Inspirasi, Inovasi, dan Transformasi",
+    heroSubtitle: "Bersama membangun pendidikan dan dakwah yang responsif terhadap perkembangan teknologi dan peradaban.",
+    aboutTitle: "Sekilas Tentang Saya",
+    aboutText: "Berdedikasi dalam pendidikan, penelitian, dan dakwah digital untuk mencetak generasi unggul."
+  },
+  tentang: {
+    title: "Profil & Perjalanan Karir",
+    content: "Saya adalah seorang akademisi, peneliti, dan praktisi pendidikan yang memiliki ketertarikan mendalam pada integrasi antara nilai-nilai keislaman dan inovasi teknologi."
+  },
+  layanan: {
+    title: "Layanan Konsultasi & Pelatihan",
+    content: "Membantu institusi pendidikan dan individu dalam mencapai potensi maksimal melalui pendekatan strategis dan berbasis data."
+  },
+  program: {
+    title: "Program & Inisiatif",
+    content: "Berbagai program strategis yang dirancang untuk pemberdayaan ummat dan optimalisasi pendidikan."
+  },
+  publikasi: {
+    title: "Karya Ilmiah & Publikasi",
+    content: "Jelajahi berbagai buku, jurnal, dan artikel akademik yang menitikberatkan pada kajian keislaman dan teknologi."
+  }
+};
+
 export const imagesConfig = {
   hero: "https://picsum.photos/seed/akademisi/600/600",
   aboutHero: "https://picsum.photos/seed/seminar/800/1000",
