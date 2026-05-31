@@ -5,18 +5,29 @@ import { Clock, Calendar, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { programsData } from "@/lib/data";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function DynamicProgramList() {
   const [programs, setPrograms] = useState(programsData);
   const [filter, setFilter] = useState("Semua Kategori");
 
   useEffect(() => {
-    const saved = localStorage.getItem("sitePrograms");
-    if (saved) {
+    async function fetchData() {
       try {
-        setPrograms(JSON.parse(saved));
-      } catch (e) {}
+        const docRef = doc(db, "config", "programs");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.list) {
+            setPrograms(data.list);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching programs:", error);
+      }
     }
+    fetchData();
   }, []);
 
   // Extract unique categories for filter tabs

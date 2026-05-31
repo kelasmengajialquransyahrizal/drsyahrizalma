@@ -4,29 +4,51 @@ import { useState, useEffect } from "react";
 import { Plus, Edit2, Trash2, Save, Image as ImageIcon, CheckCircle2, UploadCloud, X } from "lucide-react";
 import { programsData as initialPrograms } from "@/lib/data";
 import Image from "next/image";
+import { db } from "@/lib/firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function AdminProgramPage() {
   const [programs, setPrograms] = useState<any[]>([]);
   const [editingProgram, setEditingProgram] = useState<any>(null);
   const [isNew, setIsNew] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedPrograms = localStorage.getItem("sitePrograms");
-    if (savedPrograms) {
+    async function fetchData() {
       try {
-        setPrograms(JSON.parse(savedPrograms));
-      } catch (e) {}
-    } else {
-      setPrograms(initialPrograms);
+        const docRef = doc(db, "config", "programs");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.list) {
+            setPrograms(data.list);
+          } else {
+            setPrograms(initialPrograms);
+          }
+        } else {
+          setPrograms(initialPrograms);
+        }
+      } catch (error) {
+        console.error("Error fetching programs:", error);
+        setPrograms(initialPrograms);
+      }
+      setLoading(false);
     }
+    fetchData();
   }, []);
 
-  const saveToStorage = (newPrograms: any[]) => {
+  const saveToStorage = async (newPrograms: any[]) => {
     setPrograms(newPrograms);
-    localStorage.setItem("sitePrograms", JSON.stringify(newPrograms));
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+    try {
+      await setDoc(doc(db, "config", "programs"), {
+        list: newPrograms
+      });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    } catch (e) {
+      console.error("Error saving data:", e);
+    }
   };
 
   const handleDelete = (id: string) => {
@@ -70,16 +92,49 @@ export default function AdminProgramPage() {
     setEditingProgram(null);
   };
 
+  const compressImage = (dataUrl: string, callback: (compressed: string) => void) => {
+    const img = new window.Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      let width = img.width;
+      let height = img.height;
+      const MAX_SIZE = 800;
+
+      if (width > height) {
+        if (width > MAX_SIZE) {
+          height *= MAX_SIZE / width;
+          width = MAX_SIZE;
+        }
+      } else {
+        if (height > MAX_SIZE) {
+          width *= MAX_SIZE / height;
+          height = MAX_SIZE;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx?.drawImage(img, 0, 0, width, height);
+      callback(canvas.toDataURL("image/jpeg", 0.7));
+    };
+    img.src = dataUrl;
+  };
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setEditingProgram({ ...editingProgram, image: reader.result as string });
+        compressImage(reader.result as string, (compressed) => {
+           setEditingProgram({ ...editingProgram, image: compressed });
+        });
       };
       reader.readAsDataURL(file);
     }
   };
+
+  if (loading) return <div className="p-8 text-center text-gray-500">Memuat data...</div>;
 
   return (
     <div className="max-w-5xl mx-auto">

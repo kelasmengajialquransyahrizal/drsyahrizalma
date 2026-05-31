@@ -4,42 +4,73 @@ import { useState, useEffect } from "react";
 import { pageContentConfig, imagesConfig } from "@/lib/data";
 import { Save, UploadCloud, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import { db } from "@/lib/firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function AdminTentangPage() {
   const [content, setContent] = useState(pageContentConfig.tentang);
   const [profileImage, setProfileImage] = useState(imagesConfig.profile);
   const [saved, setSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedContent = localStorage.getItem("tentangContent");
-    if (savedContent) {
+    async function fetchData() {
       try {
-        setContent(JSON.parse(savedContent));
-      } catch (e) {}
-    }
-
-    const savedImages = localStorage.getItem("siteImages");
-    if (savedImages) {
-      try {
-        const parsed = JSON.parse(savedImages);
-        if (parsed.profile) {
-          setProfileImage(parsed.profile);
+        const docRef = doc(db, "config", "tentang");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.content) setContent(data.content);
+          if (data.profileImage) setProfileImage(data.profileImage);
         }
-      } catch (e) {}
+      } catch (error) {
+        console.error("Error fetching config:", error);
+      }
+      setLoading(false);
     }
+    fetchData();
   }, []);
 
-  const handleSave = () => {
-    // Save content
-    localStorage.setItem("tentangContent", JSON.stringify(content));
+  const handleSave = async () => {
+    try {
+      await setDoc(doc(db, "config", "tentang"), {
+        content,
+        profileImage
+      });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    } catch (error) {
+      console.error("Error saving data:", error);
+    }
+  };
 
-    // Save image
-    const existingImages = JSON.parse(localStorage.getItem("siteImages") || "{}");
-    const updatedImages = { ...imagesConfig, ...existingImages, profile: profileImage };
-    localStorage.setItem("siteImages", JSON.stringify(updatedImages));
+  const compressImage = (dataUrl: string, callback: (compressed: string) => void) => {
+    const img = new window.Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      let width = img.width;
+      let height = img.height;
+      const MAX_SIZE = 800;
 
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+      if (width > height) {
+        if (width > MAX_SIZE) {
+          height *= MAX_SIZE / width;
+          width = MAX_SIZE;
+        }
+      } else {
+        if (height > MAX_SIZE) {
+          width *= MAX_SIZE / height;
+          height = MAX_SIZE;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx?.drawImage(img, 0, 0, width, height);
+      callback(canvas.toDataURL("image/jpeg", 0.7));
+    };
+    img.src = dataUrl;
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,11 +78,15 @@ export default function AdminTentangPage() {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfileImage(reader.result as string);
+        compressImage(reader.result as string, (compressed) => {
+          setProfileImage(compressed);
+        });
       };
       reader.readAsDataURL(file);
     }
   };
+
+  if (loading) return <div className="p-8 text-center text-gray-500">Memuat data...</div>;
 
   return (
     <div className="max-w-4xl mx-auto">

@@ -5,17 +5,29 @@ import { pageContentConfig, imagesConfig } from "@/lib/data";
 import DynamicImage from "@/components/DynamicImage";
 import { CheckCircle2, Award, Briefcase, GraduationCap } from "lucide-react";
 import Link from "next/link";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import Image from "next/image";
 
 export default function TentangContent() {
   const [content, setContent] = useState(pageContentConfig.tentang);
+  const [profileImage, setProfileImage] = useState(imagesConfig.profile);
 
   useEffect(() => {
-    const saved = localStorage.getItem("tentangContent");
-    if (saved) {
+    async function fetchData() {
       try {
-        setContent(JSON.parse(saved));
-      } catch (e) {}
+        const docRef = doc(db, "config", "tentang");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.content) setContent(data.content);
+          if (data.profileImage) setProfileImage(data.profileImage);
+        }
+      } catch (error) {
+        console.error("Error fetching config:", error);
+      }
     }
+    fetchData();
   }, []);
 
   return (
@@ -35,9 +47,8 @@ export default function TentangContent() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5 sticky top-28">
             <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border-8 border-gray-50">
-              <DynamicImage 
-                imageKey="profile"
-                fallbackSrc={imagesConfig.profile} 
+              <Image 
+                src={profileImage || imagesConfig.profile} 
                 alt="Dr. Syahrizal"
                 fill
                 className="object-cover"
