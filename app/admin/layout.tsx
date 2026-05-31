@@ -1,4 +1,4 @@
-import { LayoutDashboard, FileText, Settings, LogOut, Image as ImageIcon } from "lucide-react";
+import { LayoutDashboard, FileText, Settings, LogOut, Image as ImageIcon, MessageSquare, Calendar, User } from "lucide-react";
 import Link from "next/link";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -20,8 +20,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/media" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
             <ImageIcon size={20} className="mr-3" /> Kelola Media
           </Link>
+          <Link href="/admin/program" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
+            <Calendar size={20} className="mr-3" /> Kelola Program
+          </Link>
+          <Link href="/admin/tentang" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
+            <User size={20} className="mr-3" /> Kelola Tentang Saya
+          </Link>
           <Link href="/admin/halaman" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
             <Settings size={20} className="mr-3" /> Kelola Teks Halaman
+          </Link>
+          <Link href="/admin/konsultasi" className="flex items-center px-4 py-3 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
+            <MessageSquare size={20} className="mr-3" /> Jadwal Konsultasi
           </Link>
         </nav>
         <div className="p-4 border-t border-gray-800">

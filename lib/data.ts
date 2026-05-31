@@ -35,9 +35,9 @@ export const siteConfig = {
   title: "Akademisi, Konsultan Pendidikan & Trainer AI",
   description: "Pusat identitas digital, media dakwah, publikasi ilmiah, layanan konsultasi, dan pelatihan AI.",
   contact: {
-    email: "kontak@syahrizal.com",
-    phone: "+62 812-3456-7890",
-    address: "Jl. Pendidikan No. 1, Jakarta",
+    email: "syahrizal.ma@uinjambi.ac.id",
+    phone: "+6281285063251",
+    address: "Jl. Lintas Jambi - Muara Bulian KM. 16, Simpang Sungai Duren, Kec. Jambi Luar Kota, Kab. Muaro Jambi, Jambi 3636",
     socials: {
       linkedin: "https://linkedin.com",
       instagram: "https://instagram.com",
@@ -110,6 +110,39 @@ export const articlesData = [
     author: "Dr. Syahrizal, MA",
     readTime: "6 Menit",
     image: "https://picsum.photos/seed/produktivitas-akademik-1/600/400"
+  }
+];
+
+export const programsData = [
+  {
+    id: "ai-guru",
+    title: "Pelatihan AI untuk Guru & Dosen",
+    category: "Teknologi Pendidikan",
+    duration: "2 Hari Penuh",
+    format: "Hybrid (Online/Offline)",
+    target: "Pendidik, Dosen, Guru Sekolah",
+    description: "Membekali pendidik dengan keterampilan praktis menggunakan ChatGPT, Claude, dan tools AI lainnya untuk mempercepat penyusunan RPP, silabus, dan media evaluasi.",
+    image: "https://picsum.photos/seed/aiguru/800/600"
+  },
+  {
+    id: "ai-pesantren",
+    title: "Kickstart AI untuk Pesantren",
+    category: "Transformasi Digital",
+    duration: "1 Hari Intensif",
+    format: "Offline",
+    target: "Pengurus Pesantren, Asatidz",
+    description: "Workshop khusus untuk mengintegrasikan teknologi modern dalam manajemen administrasi pesantren tanpa menghilangkan tradisi keilmuan klasik.",
+    image: "https://picsum.photos/seed/aipesantren/800/600"
+  },
+  {
+    id: "prompt-engineering",
+    title: "Mastering Prompt Engineering for Research",
+    category: "Akademik & Riset",
+    duration: "4 Sesi (Zoom)",
+    format: "Online",
+    target: "Mahasiswa S2/S3, Peneliti",
+    description: "Teknik tingkat lanjut merumuskan prompt untuk mempercepat literature review, analisis data kualitatif, dan drafting jurnal internasional berbahasa Inggris.",
+    image: "https://picsum.photos/seed/prompteng/800/600"
   }
 ];
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import DynamicImage from "@/components/DynamicImage";
 import { statsData, servicesData, testimonialsData, imagesConfig, pageContentConfig } from "@/lib/data";
 import { ArrowRight, BookOpen, Cpu, GraduationCap, Megaphone, CheckCircle2 } from "lucide-react";
 
@@ -38,8 +39,9 @@ export default function Home() {
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-blue-light to-gold p-1 shadow-2xl">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white bg-white relative">
                 {/* Fallback image */}
-                <Image 
-                  src={imagesConfig.hero} 
+                <DynamicImage 
+                  imageKey="hero"
+                  fallbackSrc={imagesConfig.hero} 
                   alt="Dr. Syahrizal, MA"
                   fill
                   className="object-cover"
@@ -68,8 +70,9 @@ export default function Home() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 relative h-96 rounded-2xl overflow-hidden shadow-lg order-2 md:order-1 mt-8 md:mt-0">
-             <Image 
-                src={imagesConfig.aboutHero} 
+             <DynamicImage 
+                imageKey="aboutHero"
+                fallbackSrc={imagesConfig.aboutHero} 
                 alt="Seminar Dr. Syahrizal"
                 fill
                 className="object-cover"

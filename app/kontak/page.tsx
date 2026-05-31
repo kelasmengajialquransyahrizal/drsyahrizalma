@@ -1,9 +1,41 @@
 "use client";
 
 import { siteConfig } from "@/lib/data";
-import { Mail, MapPin, Phone, MessageSquare, Send } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquare, Send, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 
 export default function KontakPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    institution: "",
+    email: "",
+    phone: "",
+    topic: "",
+    message: ""
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email) return;
+
+    // Save to localstorage for admin cpanel
+    const existingData = JSON.parse(localStorage.getItem("konsultasiData") || "[]");
+    const newEntry = {
+      ...formData,
+      id: Date.now().toString(),
+      date: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }),
+      status: "Pending"
+    };
+    
+    localStorage.setItem("konsultasiData", JSON.stringify([...existingData, newEntry]));
+    
+    setIsSubmitted(true);
+    setFormData({ name: "", institution: "", email: "", phone: "", topic: "", message: "" });
+    
+    setTimeout(() => setIsSubmitted(false), 5000);
+  };
+
   return (
     <div className="flex flex-col w-full bg-gray-50 min-h-screen">
       <section className="bg-blue-dark py-20 px-4 sm:px-6 lg:px-8">
@@ -80,33 +112,40 @@ export default function KontakPage() {
               <h3 className="text-2xl font-display font-bold text-darker mb-2">Form Jadwal Konsultasi</h3>
               <p className="text-gray-500 mb-8">Silakan isi detail berikut, tim kami akan merespons melalui WhatsApp maksimal 1x24 jam.</p>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              {isSubmitted ? (
+                <div className="bg-emerald/10 border border-emerald/20 text-emerald-dark px-6 py-8 rounded-xl flex flex-col items-center justify-center text-center">
+                  <CheckCircle2 size={48} className="mb-4 text-emerald" />
+                  <h4 className="text-xl font-bold mb-2">Permintaan Berhasil Terkirim!</h4>
+                  <p>Terima kasih. Tim kami akan segera meninjau jadwal Anda dan menghubungi melalui WhatsApp/Email.</p>
+                </div>
+              ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="Masukkan nama..." />
+                    <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="Masukkan nama..." />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Instansi/Universitas</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="Masukkan nama instansi..." />
+                    <input type="text" value={formData.institution} onChange={(e) => setFormData({...formData, institution: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="Masukkan nama instansi..." />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                    <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">Email Aktif</label>
-                    <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="email@contoh.com" />
+                    <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="email@contoh.com" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">No. WhatsApp</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="08..." />
+                    <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none" placeholder="08..." />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Pilih Topik Konsultasi</label>
                   <div className="relative">
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none appearance-none bg-white">
+                    <select required value={formData.topic} onChange={(e) => setFormData({...formData, topic: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none appearance-none bg-white">
                       <option value="">Pilih Topik...</option>
                       <option value="institusi">Transformasi Digital Institusi</option>
                       <option value="riset">Pendampingan Riset/Publikasi</option>
@@ -119,7 +158,7 @@ export default function KontakPage() {
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Ringkasan Kebutuhan / Pesan</label>
-                  <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none resize-none" placeholder="Jelaskan secara singkat apa yang ingin didiskusikan..."></textarea>
+                  <textarea rows={4} required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue focus:ring-2 focus:ring-blue/20 transition-all outline-none resize-none" placeholder="Jelaskan secara singkat apa yang ingin didiskusikan..."></textarea>
                 </div>
 
                 <div className="pt-4">
@@ -129,6 +168,7 @@ export default function KontakPage() {
                   <p className="text-xs text-center text-gray-400 mt-4">Data Anda aman dan tidak akan dibagikan ke pihak ketiga.</p>
                 </div>
               </form>
+              )}
             </div>
           </div>
 

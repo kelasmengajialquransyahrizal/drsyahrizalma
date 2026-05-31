@@ -2,6 +2,7 @@ import { articlesData, imagesConfig, pageContentConfig } from "@/lib/data";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import DynamicImage from "@/components/DynamicImage";
 
 export const metadata = {
   title: 'Blog & Artikel - Dr. Syahrizal, MA',
@@ -29,8 +30,9 @@ export default function BlogPage() {
              <div className="text-sm font-bold text-blue uppercase tracking-wider mb-6">Artikel Unggulan</div>
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[400px] w-full rounded-3xl overflow-hidden shadow-lg">
-                  <Image 
-                    src={imagesConfig.blogFeatured} 
+                  <DynamicImage 
+                    imageKey="blogFeatured"
+                    fallbackSrc={imagesConfig.blogFeatured} 
                     alt={articlesData[0].title}
                     fill
                     className="object-cover"
